@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int score;
 
     [SerializeField] public AudioSource smashSound;
+    [SerializeField] public AudioSource collectSound;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         score++;
 
         scoreText.text = score.ToString();
+        collectSound.Play();
     }
 
     public void GameOver()
