@@ -1,10 +1,5 @@
 name: Deploy PR previews
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency: preview-${{ github.ref }}
 
 jobs:
@@ -34,24 +29,7 @@ jobs:
         with:
           targetPlatform: WebGL
 
-      # Upload Artifacts
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: Build
-          path: build/WebGL/WebGL
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: Build
-          path: .
-
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: .
+          source-dir: build/WebGL/WebGL
