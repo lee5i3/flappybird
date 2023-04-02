@@ -1,19 +1,11 @@
-name: Build and Deploy
-
-on:
-  push:
-    branches:
-      - main 
-  workflow_dispatch: {}
+name: Deploy PR previews
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+concurrency: preview-${{ github.ref }}
 
 jobs:
   build:
@@ -34,14 +26,6 @@ jobs:
           restore-keys: |
             Library-
 
-      # Test
-      # - name: Run tests
-      #   uses: game-ci/unity-test-runner@v2
-      #   env:
-      #     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-      #   with:
-      #     githubToken: ${{ secrets.GITHUB_TOKEN }}
-
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v2
@@ -59,19 +43,15 @@ jobs:
 
   deploy:
     name: Deploy
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - uses: actions/download-artifact@master
-      with:
-        name: Build
-        path: .
-    - uses: actions/configure-pages@v1
-    - uses: actions/upload-pages-artifact@v1
-      with:
-        path: .
-    - id: deployment
-      uses: actions/deploy-pages@main
+      - uses: actions/download-artifact@master
+        with:
+          name: Build
+          path: .
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: .
