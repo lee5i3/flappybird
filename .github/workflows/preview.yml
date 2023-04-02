@@ -1,15 +1,7 @@
 name: Deploy PR previews
 
-on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
-
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
