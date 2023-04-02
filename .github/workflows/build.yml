@@ -54,7 +54,7 @@ jobs:
         with:
           # Upload entire repository
           name: Build
-          path: build
+          path: build/WebGL/WebGL
 
   deploy:
     environment:
@@ -66,7 +66,7 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: Build
-        path: WebGL/WebGL
+        path: .
     - uses: actions/configure-pages@v1
     - uses: actions/upload-pages-artifact@v1
       with:
