@@ -43,4 +43,24 @@ public class Player : MonoBehaviour
 
         spriteRenderer.sprite = sprites[spriteIndex];
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Obstacle")
+        {
+            FindObjectOfType<GameManager>().GameOver();
+        } else
+        {
+            FindObjectOfType<GameManager>().IncreaseScore();
+        }
+    }
+
+    private void OnEnable()
+    {
+        Vector3 position = transform.position;
+
+        position.y = 0f;
+        transform.position = position;
+        direction = Vector3.zero;
+    }
 }
