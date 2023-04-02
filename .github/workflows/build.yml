@@ -69,7 +69,5 @@ jobs:
         path: .
     - uses: actions/configure-pages@v1
     - uses: actions/upload-pages-artifact@v1
-      with:
-        path: build
     - id: deployment
       uses: actions/deploy-pages@main
