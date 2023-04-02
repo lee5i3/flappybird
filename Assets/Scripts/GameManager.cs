@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
     private int score;
 
+    [SerializeField] public AudioSource smashSound;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         playButton.SetActive(true);
+
+        smashSound.Play();
 
         this.Pause();
     }
