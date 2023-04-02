@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
 
     public float strength = 5f;
 
+    [SerializeField] public AudioSource flySound;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             direction = Vector3.up * strength;
+
+            flySound.Play();
         }
 
         direction.y += gravity * Time.deltaTime;
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
-    }
+    }    
 
     private void Awake()
     {
