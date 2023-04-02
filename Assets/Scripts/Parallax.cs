@@ -3,7 +3,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
-    private float animationSpeed = 1f;
+    public float animationSpeed = 1f;
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
