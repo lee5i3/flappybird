@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://biiy303gmjpnk"]
+
+[ext_resource type="Texture2D" uid="uid://di66r6uatbp58" path="res://assets/spritesheet.png" id="1_tjsv3"]
+
+[node name="StartMenu" type="Node2D"]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(157, 41)
+texture = ExtResource("1_tjsv3")
+region_enabled = true
+region_rect = Rect2(295, 59, 92, 25)
+
+[node name="Message" type="Sprite2D" parent="."]
+position = Vector2(151, 122)
+scale = Vector2(1.34649, 1.64796)
+texture = ExtResource("1_tjsv3")
+region_enabled = true
+region_rect = Rect2(292, 110, 57, 30)

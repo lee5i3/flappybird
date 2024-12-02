@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6nr2ui0imcg3"
+path="res://.godot/imported/Retro7.mp3-e41ec086f3d3b38f971d236596268feb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/UI Soundpack/Retro7.mp3"
+dest_files=["res://.godot/imported/Retro7.mp3-e41ec086f3d3b38f971d236596268feb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
