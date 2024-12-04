@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpx3ju4prajgy"]
+
+[ext_resource type="Script" path="res://scenes/environment/background.gd" id="1_wlfdy"]
+[ext_resource type="Texture2D" uid="uid://byrbxj08lfx51" path="res://assets/tutorial/background-day.png" id="2_7u5v6"]
+
+[sub_resource type="Animation" id="Animation_vhsb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kbqmp"]
+resource_name = "scroll"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-288, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tph3r"]
+_data = {
+"RESET": SubResource("Animation_vhsb1"),
+"scroll": SubResource("Animation_kbqmp")
+}
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_wlfdy")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1750.0
+offset_bottom = 512.0
+texture = ExtResource("2_7u5v6")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tph3r")
+}
+autoplay = "scroll"
