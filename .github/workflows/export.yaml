@@ -2,31 +2,49 @@ name: itch.io upload
 
 on:
   push:
-    paths:
-      - "version"
-      - ".github/workflows/upload-itchio.yml"
-      - "export_presets.html.example"
-
-env:
-  WORKING_DIRECTORY: game
+    branches:
+      - main
 
 jobs:
-  deploy:
-    if: github.ref == 'refs/heads/prod'
+  build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
 
-      - name: Create export directory
-        run: mkdir html5
-
-      - name: Create export_presets.cfg
-        run: cp game/export_presets.html.example game/export_presets.cfg
+      - name: Create directory
+        run: mkdir dist
 
       - name: Godot HTML5 export
-        uses: dulvui/godot-html-export@v1
+        uses: dulvui/godot-4-html-export@v1
         with:
-          working-directory: ${{ env.WORKING_DIRECTORY }} 
-          godot-version: 3.6
-          create-export-preset-cfg: false
+          godot-version: 4.3
+          godot-channel: stable
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      # environment created automatically by GitHub
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2          
