@@ -22,11 +22,9 @@ jobs:
         run: mkdir dist
 
       - name: Godot HTML5 export
-        uses: dulvui/godot-html-export@v1
+        uses: dulvui/godot-4-html-export@v1
         with:
-          working-directory: ./dist/index.html
-          godot-version: 4.2
-          create-export-preset-cfg: false
+          godot-version: 4.2.2
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
