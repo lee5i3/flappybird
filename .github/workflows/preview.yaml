@@ -9,11 +9,9 @@ on:
       - synchronize
       - closed
 
-concurrency: preview-${{ github.ref }}
-
 jobs:
   deploy-preview:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -24,7 +22,8 @@ jobs:
       - name: Godot HTML5 export
         uses: dulvui/godot-4-html-export@v1
         with:
-          godot-version: 4.2.2
+          godot-version: 4.3
+          godot-channel: stable
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
