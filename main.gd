@@ -1,7 +1,6 @@
 extends Node
 
 @onready var player: Player = $Player
-@onready var pipes: Node2D = $Pipes
 @onready var obstacle_manager: ObstacleManager = $ObstacleManager
 @onready var audio_manager: AudioManager = $AudioManager
 @onready var score_overlay: ScoreOverlay = $ScoreOverlay
