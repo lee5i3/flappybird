@@ -43,6 +43,7 @@ func start_new_game():
 	
 	Global.is_game_running = true
 	Global.is_game_ended = false
+	Global.is_player_dead = false
 	obstacle_manager.start()
 	ground.start()
 	

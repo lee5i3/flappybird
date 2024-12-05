@@ -30,4 +30,5 @@ func flap():
 	animated_sprite_2d.play()
 
 func death():	
+	Global.is_player_dead = true
 	animated_sprite_2d.flip_v = true

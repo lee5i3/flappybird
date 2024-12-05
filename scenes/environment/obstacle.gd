@@ -11,10 +11,11 @@ func _physics_process(delta: float) -> void:
 		print("Removing obstacle, off screen")
 		queue_free()
 
-func _on_score_area_body_exited(body: Node2D) -> void:
+func _on_score_area_body_exited(body: Node2D) -> void:		
 	if body is Player:
-		print("Player has exited score area")
-		Events.player_score.emit()
+		if Global.is_player_dead != true:
+			print("Player has exited score area")
+			Events.player_score.emit()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

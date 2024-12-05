@@ -12,5 +12,6 @@ var player_state:PLAYER_STATE
 var is_game_running:bool
 var is_game_initialized:bool
 var is_game_ended:bool
+var is_player_dead:bool
 
 var current_score:int = 0
