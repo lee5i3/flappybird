@@ -19,8 +19,7 @@ func _on_timer_timeout() -> void:
 	spawn_obstacle()
 
 func spawn_obstacle():
-	print("hello world")
-	var obstacle = Obstacle.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var obstacle = Obstacle.instantiate()
 	if obstacle != null:
 		obstacle_container.add_child(obstacle)
 		obstacle.position.y = randi() % 300 + 150

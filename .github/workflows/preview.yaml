@@ -7,24 +7,35 @@ on:
       - opened
       - reopened
       - synchronize
-      
+      - closed
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      # https://github.com/actions/checkout
+      - name: Checkout source code
         uses: actions/checkout@v3
+
+      - name: Create build date
+        run: |
+          sudo timedatectl set-timezone "America/New_York"
+          sed -i "s/^var version: String = \".*\"/var version: String = \"$(date)\"/" ./scenes/globals/version.gd
 
       - name: Create directory
         run: mkdir dist
 
+      # https://github.com/dulvui/godot-4-html-export
       - name: Godot HTML5 export
         uses: dulvui/godot-4-html-export@v1
         with:
           godot-version: 4.3
           godot-channel: stable
 
+      # https://github.com/rossjrw/pr-preview-action
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./dist/
+          action: auto

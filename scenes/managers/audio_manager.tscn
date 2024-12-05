@@ -11,7 +11,7 @@ script = ExtResource("1_8hicp")
 
 [node name="FairyFlap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_i8g7b")
-volume_db = -7.924
+volume_db = -5.943
 pitch_scale = 0.74
 max_polyphony = 5
 
@@ -24,5 +24,6 @@ stream = ExtResource("4_53vxs")
 
 [node name="Background" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hsb4l")
+volume_db = -9.905
 autoplay = true
 parameters/looping = true
