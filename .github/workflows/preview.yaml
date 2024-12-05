@@ -18,9 +18,9 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
-      - name: Create build.txt
+      - name: Create build date
         run: |
-          echo $(date) > build.txt
+          sed -i "s/^var version: String = \".*\"/var version: String = \"$(date)\"/" ./scenes/globals/version.gd
 
       - name: Create directory
         run: mkdir dist
