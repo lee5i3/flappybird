@@ -18,3 +18,5 @@ func _process(delta: float) -> void:
 func updateScore(value):
 	Global.current_score = value
 	score.text = "Score: %s" % [value]
+	print("current score: ", Global.current_score)
+	print("score value: ", value)	

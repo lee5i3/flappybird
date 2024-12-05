@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 
 Global="*res://scenes/globals/global.gd"
 Events="*res://scenes/globals/events.gd"
-Version="*res://scenes/globals/version.gd"
 
 [display]
 
