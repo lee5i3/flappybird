@@ -3,7 +3,7 @@ class_name ObstacleManager
 
 @onready var timer: Timer = $Timer
 
-@onready var Obstacle : PackedScene = preload("res://scenes/environment/obstacle.tscn")
+@onready var Obstacle : PackedScene = ResourceLoader.load("res://scenes/environment/obstacle.tscn")
 
 @onready var obstacle_container: Node2D  # A container to hold obstacles
 
@@ -19,7 +19,7 @@ func _on_timer_timeout() -> void:
 	spawn_obstacle()
 
 func spawn_obstacle():
-	var obstacle = Obstacle.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
+	var obstacle = Obstacle.instantiate()
 	print("obstacle: ", obstacle)
 	if obstacle != null:
 		obstacle_container.add_child(obstacle)
