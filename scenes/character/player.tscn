@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdmh206gphq5x"]
+[gd_scene load_steps=26 format=3 uid="uid://bdmh206gphq5x"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_wxyj8"]
 [ext_resource type="Texture2D" uid="uid://cuepviecp42en" path="res://assets/player/death.png" id="2_62iyh"]
 [ext_resource type="Texture2D" uid="uid://cmrtmprh6x1r4" path="res://assets/player/fairy.png" id="2_3045n"]
+[ext_resource type="PackedScene" uid="uid://c722rxbuq27fb" path="res://scenes/components/input_component.tscn" id="4_ppvd2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dj7cg"]
 atlas = ExtResource("2_62iyh")
@@ -162,3 +163,6 @@ sprite_frames = SubResource("SpriteFrames_l7bvo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_g5vxh")
+
+[node name="InputComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppvd2")]
+player = NodePath("..")

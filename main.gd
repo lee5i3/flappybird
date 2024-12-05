@@ -63,16 +63,16 @@ func on_player_score():
 	Global.current_score += 1
 	score_overlay.updateScore(Global.current_score)
 
-func _input(event: InputEvent) -> void:
-	if Global.is_game_ended:
-		return;
-	
-	if Input.is_action_just_pressed("flap"):
-		if !Global.is_game_running:
-			Events.new_game.emit()
-			
-		if player.position.y < 0:
-			Events.player_hit.emit()
-		
-		player.flap()
-		audio_manager.fairy_flap.play()
+#func _input(event: InputEvent) -> void:
+	#if Global.is_game_ended:
+		#return;
+	#
+	#if Input.is_action_just_pressed("flap"):
+		#if !Global.is_game_running:
+			#Events.new_game.emit()
+			#
+		#if player.position.y < 0:
+			#Events.player_hit.emit()
+		#
+		#player.flap()
+		#audio_manager.fairy_flap.play()
