@@ -17,6 +17,10 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Create build.txt
+        run: |
+          echo $(date) > build.txt
+
       - name: Create directory
         run: mkdir dist
 
