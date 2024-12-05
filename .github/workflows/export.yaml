@@ -34,3 +34,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           destination_dir: docs
+
+      # https://github.com/dulvui/itchio-butler-upload
+      - name: Upload to itch.io
+        uses: dulvui/itchio-butler-upload@v0.0.1
+        with:
+          working-directory: ./dist
+          api-key: ${{ secrets.ITCHIO_API_KEY }}
+          user: lee5i3
+          game: flappyfairy
+          channel: html5
