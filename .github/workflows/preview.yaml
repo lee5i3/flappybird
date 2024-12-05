@@ -7,10 +7,35 @@ on:
       - opened
       - reopened
       - synchronize
-      
+
 jobs:
+  clean:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete directory
+        run: rm -rf pr-preview/pr-${{ github.event.pull_request.number }}
+
+      - name: Check in changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Cleanup PR preview"
+          git push
+
   deploy-preview:
     runs-on: ubuntu-latest
+    needs: clean
     steps:
       - name: Checkout
         uses: actions/checkout@v3
