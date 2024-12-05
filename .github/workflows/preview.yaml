@@ -20,6 +20,7 @@ jobs:
 
       - name: Create build date
         run: |
+          timedatectl set-timezone "America/New_York"
           sed -i "s/^var version: String = \".*\"/var version: String = \"$(date)\"/" ./scenes/globals/version.gd
 
       - name: Create directory
