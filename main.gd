@@ -47,14 +47,15 @@ func start_new_game():
 	ground.start()
 	
 func on_player_hit():
-	Global.is_game_ended = true
-	Global.is_game_running = false
-	obstacle_manager.stop()	
-	ground.stop()
-	player.death()
-	# Menus
-	$GameOver.show()
-	audio_manager.fairy_hit.play()
+	if Global.is_game_ended == false:
+		Global.is_game_ended = true
+		Global.is_game_running = false
+		obstacle_manager.stop()	
+		ground.stop()
+		player.death()
+		# Menus
+		$GameOver.show()	
+		audio_manager.fairy_hit.play()
 
 func on_player_score():
 	audio_manager.score.play()
