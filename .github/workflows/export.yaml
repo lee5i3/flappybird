@@ -13,18 +13,21 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/actions/checkout
       - name: Checkout source code
         uses: actions/checkout@v3
 
       - name: Create directory
         run: mkdir dist
 
+      # https://github.com/dulvui/godot-4-html-export
       - name: Godot HTML5 export
         uses: dulvui/godot-4-html-export@v1
         with:
           godot-version: 4.3
           godot-channel: stable
 
+      # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
