@@ -20,7 +20,6 @@ func _on_timer_timeout() -> void:
 
 func spawn_obstacle():
 	var obstacle = Obstacle.instantiate()
-	print("obstacle: ", obstacle)
 	if obstacle != null:
 		obstacle_container.add_child(obstacle)
 		obstacle.position.y = randi() % 300 + 150
