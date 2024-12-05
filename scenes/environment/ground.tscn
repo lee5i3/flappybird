@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://8qw5q7bqgo13"]
+[gd_scene load_steps=7 format=3 uid="uid://8qw5q7bqgo13"]
 
 [ext_resource type="Script" path="res://scenes/environment/ground.gd" id="1_50hiq"]
-[ext_resource type="Texture2D" uid="uid://cwtqa1vsflnsu" path="res://assets/tutorial/base.png" id="2_1bm2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yd884"]
 size = Vector2(809, 110)
@@ -51,9 +50,9 @@ size = Vector2(818, 28)
 script = ExtResource("1_50hiq")
 
 [node name="Sprite" type="TextureRect" parent="."]
-offset_right = 929.0
+offset_left = -1.08122
+offset_right = 927.919
 offset_bottom = 112.0
-texture = ExtResource("2_1bm2w")
 stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

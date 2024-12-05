@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://pl8bss40n2k1"]
 
-[ext_resource type="Texture2D" uid="uid://cimvujv2ie8xf" path="res://assets/tutorial/pipe-green.png" id="1_gugvf"]
+[ext_resource type="Texture2D" path="res://assets/tutorial/pipe-green.png" id="1_gugvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrpc4"]
 size = Vector2(53, 321)
