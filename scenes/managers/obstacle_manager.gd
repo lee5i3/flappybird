@@ -3,7 +3,7 @@ class_name ObstacleManager
 
 @onready var timer: Timer = $Timer
 
-@onready var Obstacle : PackedScene = ResourceLoader.load("res://scenes/environment/obstacle.tscn")
+@onready var Obstacle : PackedScene = preload("res://scenes/environment/obstacle.tscn")
 
 @onready var obstacle_container: Node2D  # A container to hold obstacles
 
