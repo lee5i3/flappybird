@@ -7,15 +7,16 @@
 size = Vector2(21, 148.5)
 
 [node name="Obstacle" type="Node2D"]
+z_index = 10
 position = Vector2(0, 300)
 script = ExtResource("1_gquvl")
 
 [node name="Top" parent="." instance=ExtResource("2_k7rjw")]
-position = Vector2(-6, -125)
-rotation = 3.14159
+position = Vector2(63, -537)
 
 [node name="Bottom" parent="." instance=ExtResource("2_k7rjw")]
-position = Vector2(61, 125)
+position = Vector2(5, 542)
+rotation = 3.14159
 
 [node name="ScoreArea" type="Area2D" parent="."]
 

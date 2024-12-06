@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpx3ju4prajgy"]
 
 [ext_resource type="Script" path="res://scenes/environment/background.gd" id="1_wlfdy"]
-[ext_resource type="Texture2D" uid="uid://byrbxj08lfx51" path="res://assets/tutorial/background-day.png" id="2_7u5v6"]
+[ext_resource type="Texture2D" uid="uid://daupkhpglp73e" path="res://assets/background/2.png" id="2_0h2pc"]
 
 [sub_resource type="Animation" id="Animation_vhsb1"]
 length = 0.001
@@ -47,7 +47,7 @@ script = ExtResource("1_wlfdy")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1750.0
 offset_bottom = 512.0
-texture = ExtResource("2_7u5v6")
+texture = ExtResource("2_0h2pc")
 stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

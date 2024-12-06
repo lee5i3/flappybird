@@ -1,16 +1,18 @@
 name: Pages upload
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 
 permissions:
   contents: write
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       # https://github.com/actions/checkout
@@ -27,16 +29,16 @@ jobs:
           godot-version: 4.3
           godot-channel: stable
 
-      # https://github.com/peaceiris/actions-gh-pages
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      # https://github.com/rossjrw/pr-preview-action
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          destination_dir: docs
+          source-dir: ./dist/
+          action: auto
 
       # https://github.com/dulvui/itchio-butler-upload
       - name: Upload to itch.io
+        if: ${{ github.event.pull_request.merged == true }}
         uses: dulvui/itchio-butler-upload@v0.0.1
         with:
           working-directory: ./dist
