@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck07gb6okm0b7"]
+[gd_scene load_steps=10 format=3 uid="uid://ck07gb6okm0b7"]
 
 [ext_resource type="PackedScene" uid="uid://bdmh206gphq5x" path="res://scenes/character/player.tscn" id="1_e7xjn"]
 [ext_resource type="Script" path="res://main.gd" id="1_t0h8w"]
@@ -7,20 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://biiy303gmjpnk" path="res://scenes/menus/start_menu.tscn" id="6_1gn1k"]
 [ext_resource type="PackedScene" uid="uid://dm8kiuby10en8" path="res://scenes/managers/audio_manager.tscn" id="7_rou4p"]
 [ext_resource type="PackedScene" uid="uid://buavy74nlmx3o" path="res://scenes/menus/score_overlay.tscn" id="8_sgdba"]
+[ext_resource type="PackedScene" uid="uid://bpx3ju4prajgy" path="res://scenes/environment/background.tscn" id="9_jhkxq"]
 [ext_resource type="PackedScene" uid="uid://duy3tryjiehlx" path="res://scenes/menus/game_over.tscn" id="9_shhu3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_t0h8w")
 
-[node name="Player" parent="." instance=ExtResource("1_e7xjn")]
-position = Vector2(399, 303)
-
 [node name="ObstacleManager" parent="." instance=ExtResource("5_3eeog")]
 position = Vector2(850, 0)
+
+[node name="Background" parent="." instance=ExtResource("9_jhkxq")]
+z_index = 1
 
 [node name="Ground" parent="." instance=ExtResource("4_yp8h2")]
 z_index = 1
 position = Vector2(-25, 540)
+
+[node name="Player" parent="." instance=ExtResource("1_e7xjn")]
+z_index = 600
+position = Vector2(399, 303)
 
 [node name="AudioManager" parent="." instance=ExtResource("7_rou4p")]
 
