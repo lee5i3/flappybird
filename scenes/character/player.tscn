@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdmh206gphq5x"]
+[gd_scene load_steps=26 format=3 uid="uid://bdmh206gphq5x"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_wxyj8"]
 [ext_resource type="Texture2D" uid="uid://cuepviecp42en" path="res://assets/player/death.png" id="2_62iyh"]
@@ -153,17 +153,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5vxh"]
 
-[sub_resource type="Environment" id="Environment_il1mi"]
-background_mode = 3
-glow_enabled = true
-glow_blend_mode = 1
-
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1_wxyj8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(2, 2.703, 2, 1)
 sprite_frames = SubResource("SpriteFrames_l7bvo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -172,6 +166,3 @@ shape = SubResource("CircleShape2D_g5vxh")
 
 [node name="InputComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ppvd2")]
 player = NodePath("..")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_il1mi")
