@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://8qw5q7bqgo13"]
+[gd_scene load_steps=9 format=3 uid="uid://8qw5q7bqgo13"]
 
 [ext_resource type="Script" path="res://scenes/environment/ground.gd" id="1_50hiq"]
+[ext_resource type="Texture2D" uid="uid://c6k4dv5l6b8s3" path="res://assets/bottom/layer.png" id="2_6jsj3"]
+[ext_resource type="Texture2D" uid="uid://dlmm3ljfjdvpr" path="res://assets/bottom/background.png" id="2_b21r7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yd884"]
-size = Vector2(809, 110)
+size = Vector2(809, 67)
 
 [sub_resource type="Animation" id="Animation_2m421"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Ground:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,22 +21,47 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-20, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, -184)]
+}
 
 [sub_resource type="Animation" id="Animation_11xkq"]
 resource_name = "scroll"
+length = 4.0
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Ground:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-95, 0)]
+"values": [Vector2(0, 0), Vector2(-800, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Layer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-800, -200), Vector2(-2400, -200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bbuwt"]
@@ -49,25 +76,37 @@ size = Vector2(818, 28)
 [node name="Ground" type="StaticBody2D"]
 script = ExtResource("1_50hiq")
 
-[node name="Sprite" type="TextureRect" parent="."]
-offset_left = -1.08122
-offset_right = 927.919
-offset_bottom = 112.0
+[node name="Layer" type="TextureRect" parent="."]
+visible = false
+z_index = 4
+offset_left = -800.0
+offset_top = -300.0
+offset_right = 1000.0
+offset_bottom = -73.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_6jsj3")
+stretch_mode = 1
+
+[node name="Ground" type="TextureRect" parent="."]
+offset_right = 1800.0
+offset_bottom = 64.0
+texture = ExtResource("2_b21r7")
 stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(399.5, 57)
+position = Vector2(399.5, 78.5)
 shape = SubResource("RectangleShape2D_yd884")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bbuwt")
 }
+autoplay = "scroll"
 
 [node name="HitZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(399, 12)
+position = Vector2(396, 57)
 shape = SubResource("RectangleShape2D_gfu6j")
 
 [connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
