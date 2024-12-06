@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://pl8bss40n2k1"]
 
-[ext_resource type="Texture2D" uid="uid://d2hashfo5ruec" path="res://assets/environment/obstacle.png" id="1_1u44q"]
+[ext_resource type="Texture2D" uid="uid://dyvwl75qivhca" path="res://assets/environment/obstacle.png" id="1_1u44q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3385"]
 radius = 37.955
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.03333, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0349066, -0.0349066, 0.0]
+"values": [1.5708, 1.6057, 1.53589, 1.5708]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttffe"]
@@ -50,9 +50,9 @@ _data = {
 position = Vector2(34.045, 15.43)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-35, -27)
+position = Vector2(-35.045, 26.57)
 texture = ExtResource("1_1u44q")
-offset = Vector2(5, 235)
+offset = Vector2(174.894, -3.8667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-34.045, 168.57)
